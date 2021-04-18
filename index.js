@@ -2,6 +2,8 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
+const port = process.env.port || 3000
+
 const addRoutes = require('./routes/add');
 const homeRoutes = require('./routes/home');
 const errController = require('./app/controllers/error');
@@ -32,4 +34,4 @@ app.use(addRoutes);
 app.use(homeRoutes);
 app.use(errController.getError);
 
-app.listen(3000);
+app.listen(port);
