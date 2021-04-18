@@ -1,0 +1,12 @@
+{{#each msgs}}
+    <tr id="msg_id_{{this.key}}">
+        <td>
+            <input class="mr-2" type="checkbox" id="rss_id_{{this.key}}" name="scales">
+        </td>
+        <td>
+            <strong>{{this.title}}</strong>
+            <p>{{this.desc}}</p>
+            <a target="_blank" href="{{this.link}}">read more</a></p>
+        </td>
+    </tr>
+{{/each}}

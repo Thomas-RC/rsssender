@@ -1,0 +1,154 @@
+<div class="container mb-5">
+
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1 class="mt-5"> 6 steps to send </h1>
+        </div>
+        <div class="col">
+            <div class="col-lg-12 text-center">
+                <h3 class="mt-5">1. Add email to send message</h3>
+            </div>
+
+            <form id="getEmail" class="navbar-search" method="post">
+                <div class="input-group">
+                    <input id="email" type="text" name="name_email" class="form-control bg-light border-dark small" placeholder="Add email address: name@exaple.site"
+                           aria-label="Search" aria-describedby="basic-addon2" required>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="far fa-envelope mr-2"></i> Click to Add
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col">
+            <div class="col-lg-12 text-center">
+                <h3 class="mt-5">2. Get your RSS file</h3>
+            </div>
+
+            <form id="getFeed" class="navbar-search">
+                <div class="input-group">
+                    <input id="feed" type="text" class="form-control bg-light border-dark small" name="url_rss" placeholder="Add RSS feed: https://example.site/rss.xml"
+                           aria-label="Search" aria-describedby="basic-addon2" required>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="fas fa-rss mr-2"></i>Click to Get
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="text-center m-4">
+        <div class="btn-group" role="group" aria-label="Basic example">
+        <button id="preview_rss" class="btn btn-xl btn-outline-dark mt-1" data-toggle="modal" data-target="#exampleModalFeed">
+            <i class="fas fa-eye mr-2"></i>
+            3. Preview your RSS file
+        </button>
+        <button id="create_msg" class="btn btn-xl btn-outline-dark mt-1" data-toggle="modal" data-target="#exampleModalMsgCreate">
+            <i class="fas fa-envelope-open-text mr-2"></i>
+            4. Create your Email message
+        </button>
+        <button id="preview_msg" class="btn btn-xl btn-outline-dark mt-1" data-toggle="modal" data-target="#exampleModal">
+            <i class="far fa-eye mr-2"></i>
+            5. Preview your Email message
+        </button>
+        <button id="send" class="btn btn-xl btn-outline-dark mt-1">
+            <i class="fas fa-share-square mr-2"></i>
+            6. Send your Email message
+        </button>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- Add content to message -->
+<div class="modal fade" id="exampleModalMsgCreate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add content to message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="xml" id="msg_create_add"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-xl btn-outline-dark mt-1" data-dismiss="modal">
+                    <i class="far fa-window-close mr-2"></i>
+                    Close Preview
+                </button>
+                <button id="save_msg" class="btn btn-xl btn-outline-dark mt-1">
+                    <i class="far fa-save mr-2"></i>
+                        Save message to DB
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ModalFeed -->
+<div class="modal fade" id="exampleModalFeed" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">RSS file</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <pre><code class="xml" id="rss_preview_feed"></code></pre>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-xl btn-outline-dark mt-1" data-dismiss="modal">
+                    <i class="far fa-window-close mr-2"></i>
+                    Close Preview
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Email message to send</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="xml" id="msg_to_send"></div>
+                <div class="d-none" id="id_to_get"></div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-xl btn-outline-dark mt-1" data-dismiss="modal">
+                    <i class="far fa-window-close mr-2"></i>
+                    Close Preview
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="toast bg-dark text-white" style="position: absolute; top: 30px; left: 30px;" data-delay="3000">
+    <div class="toast-header bg-dark">
+        <i class="fas fa-rss-square mr-2 text-white"></i>
+        <strong class="mr-auto text-white"> RSS SENDER</strong>
+        <button type="button" class="ml-2 mb-1 close text-white" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body">
+    </div>
+</div>
