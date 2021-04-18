@@ -11,13 +11,13 @@ module.exports = class DBdriver
     async getConn()
     {
 
-        const dbUrl = 'mongodb://shops:shops@localhost/rsssender?authMechanism=SCRAM-SHA-256&authSource=admin';
+        const dbUrl = 'mongodb://user1:user1password@51.68.137.128/rssapp?authMechanism=SCRAM-SHA-256&authSource=admin';
 
         try {
             const client = await dbClient.connect(
             dbUrl, {useNewUrlParser: true, useUnifiedTopology: true });
 
-            return await client.db('rsssender').collection(this.collectionName);
+            return await client.db('rssapp').collection(this.collectionName);
         }
         catch (e)
         {
